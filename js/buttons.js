@@ -3,7 +3,7 @@ $('.horizontal').click(function(e){
 	$.ajax({
 		url:'scripts/viewsScript.php?createStory=1',
 		success: function (data){
-			console.log(data);
+			$("body").prepend(data);
 		}
 	});
 });

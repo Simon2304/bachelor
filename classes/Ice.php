@@ -61,7 +61,7 @@ class Ice {
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			if (empty($result)) {
 				return false;
-				exit();
+				
 			} else {
 				return $result;
 			}

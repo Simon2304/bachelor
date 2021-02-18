@@ -11,6 +11,7 @@ $('.editFuckForm').submit(function(e){
 		success: function(response){
 			$('.fuck_item[data-id="'+id+'"] .fuck_tj').html(response.fuck);
 			$('.fuck_item[data-id="'+id+'"] .hiddentextarea').html(response.fuck);
+			$('.edit_fuck').fadeOut(200);
 			console.log(response);
 		}
 	});

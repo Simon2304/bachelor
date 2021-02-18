@@ -7,7 +7,7 @@ class View {
 			//echo "<div class='close-btn'>&times;</div>";
 			echo "<h2> Enter credentials</h2>";
 			echo "<p> Contactpersoon en telefoonnummer van de persoon die wij moeten bellen in geval van nood </p>";
-			echo "<form action='' method='POST' >";
+			echo "<form action='' method='POST'>";
 				//echo "<div class='form-element'>";
 					echo "<input type='text' name='tel' required>";
 					echo "<label for='tel'>Telefoonnummer</label>";
@@ -26,41 +26,43 @@ class View {
 	public function readIceView($ice_info){
 
 		if($ice_info == false) {
-			echo "<div class='data'>
+			echo "<div class='ice-data'>
 				<div class='ice'>
 					<h2> In Case off Emergency (ICE) </h2>";
 			echo "TODO: Insert emergency contact";
 			echo "<table>";
-			echo "<form action='' method='POST' onclick='toggleForm()'>";
+			echo "<form action='' method='POST'>";
 			echo "<tr><td><input type='submit' name='new' value='new'></tr>";
 			echo "</form></table>";
 			echo "	</div>
 			</div>";
 		} else {
+			echo "<div class='ice-data'><h2> In Case off Emergency (ICE) </h2>";
 			for ($i = 0; $i < sizeof($ice_info); $i++) {
-				echo "<div class='data'>
-					<div class='ice'>
-						<h2> In Case off Emergency (ICE) </h2>";
-				echo "<table>";
-				echo "<form action='' method='POST'>";
-				echo "<tr><td><input type='hidden' name='cp' value='".$ice_info[$i]['cp']."'> Contactpersoon: " . $ice_info[$i]['cp'] . "</td></tr>";
-				echo "<tr><td><input type='hidden' name='tel' value='".$ice_info[$i]['tel']."'>  Telefoonnummer: " . $ice_info[$i]['tel'] . "</td></tr>";
-				echo "<tr><td><input type='hidden' name='id' value='". $ice_info[$i]['id'] ."'>
-				<input type='submit' name='delete' value='delete'>&nbsp&nbsp
-				<input type='submit' name='edit' value='edit'></tr>";
-				echo "</br>";
-				echo "</form>";
+				echo "<div class='ice-person' data-id='".$ice_info[$i]['id']."'>";
+					echo "<table>";
+						echo "<form action='' method='POST'>";
+						echo "<tr><td><input type='hidden' name='cp' value='".$ice_info[$i]['cp']."'><div class='ice-cp'> Contactpersoon: " . $ice_info[$i]['cp'] . "</div></td></tr>";
+						echo "<tr><td><input type='hidden' name='tel' value='".$ice_info[$i]['tel']."'> <div class='ice-tel'> Telefoonnummer: " . $ice_info[$i]['tel'] . "</div></td></tr>";
+						echo "<tr><td><input type='hidden' name='id' value='". $ice_info[$i]['id'] ."'>";
+						echo "<input type='submit' name='delete' value='delete'>";
+						echo "<input type='submit' name='edit' value='edit'></tr>";
+						echo "</br>";
+						echo "</table></form>";
+
+				echo "</div>";
 			}
 			echo "<form action='' method='POST'>";
-			echo "<tr><td><input type='submit' name='new' value='new'></tr>";
-			echo "</form></table>";
+			echo "<tr><td><input type='submit' name='new' value='new' class='new-ice'></tr>";
+			echo "</form>";
 			echo "	</div></div>";
 		}
 	}
 
-	public function deleteIceView(){
-		echo "<div class='wrapper2'>";
-		echo "<form action='' method='POST'>";
+	public function deleteIceView($ice_id){
+		echo "<div class='wrapper2' data-id='".$ice_id."'>";
+		echo "<form action='' method='POST' class='deleteIceView'>";
+		echo "<input type='hidden' name='id' value='".$ice_id."'>";
 		echo "<tr><td><input type='submit' name='yes' value='yes'></td>
 		<td><input type='submit' name='no' value='no'></td></tr>";
 		echo "</form>";
@@ -69,9 +71,10 @@ class View {
 
 	public function updateIceView($edit_form) {
 		echo "<div class='wrapper2'>";
-		echo "<form action='' method='POST'>";
+		echo "<form action='' method='POST' class='editIceForm'>";
 		echo "<input type='text' name='cp' value='".$edit_form['cp']."'>";
 		echo "<input type='text' name='tel' value='".$edit_form['tel']."'>";
+		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
 		echo "<input type='submit' name='edit_ice' value='edit'>";
 		echo "</form>";
 		echo "</div>";
@@ -153,9 +156,6 @@ class View {
 	public function storyTjView($fuck_tj) {
 		//shuffle($fuck_tj);
 
-		// Kleine 'profielfoto' voor de naam. (zelf toegevoegd en gekoppeld aan id, niet vooraf bepaald)
-		// foto's van gitaristen gebruiken? Of spongebob figuren?
-		// Titel boven feed?
 		echo "<div class='story'>";
 		echo "<h2>Stories about TJ</h2>";
 		for ($i = 0; $i < sizeof($fuck_tj); $i++) {
@@ -182,25 +182,43 @@ class View {
 	}
 
 	public function editFuckTjView($edit_form) {
+		echo "<div class='overlay-form'>";
 		echo "<div class='edit_fuck'>";
 		echo "<form action='' class='editFuckForm' data-id='".$edit_form['id']."' method='POST'>";
-		echo "<textarea name='fuck'>".$edit_form['fuck']."</textarea>";
+		echo "<textarea name='fuck'>".strip_tags($edit_form['fuck'])."</textarea>";
 		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
 		echo "<input type='submit' name='update_fuck' value='edit'>";
 		echo "</form>";
-		echo "</div>";
+		echo "</div></div>";
 	}
 
 	public function editStoryTjView($edit_form) {
+		echo "<div class='overlay-form'>";
 		echo "<div class='edit_story'>";
 		echo "<form action='' class='editStoryForm' data-id='".$edit_form['id']."' method='POST'>";
-		echo "<textarea name='story'>".$edit_form['story']."</textarea> <br />";
+		echo "<textarea name='story'>".strip_tags($edit_form['story'])."</textarea> <br />";
 		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
 		echo "<input type='submit' name='update_story' value='edit'>";
+		echo "<input type='submit' name='close' value='close'>";
 		echo "</form>";
-		echo "</div>";
+		echo "</div></div>";
 	}
 
+	public function createStoryTjView() {
+		echo "<div class='overlay-form'>";
+		echo "<div class='create_story'>";
+		echo "<form action='' class='createStoryForm' data-id='234' method='POST'>";
+		echo "<textarea name='story'></textarea> <br />";
+		echo "<div class='checkbox'>";
+		echo "<input type='radio' id='in' name='check-in' value='1' checked>";
+		echo "<label for='in' class='mr-10'>Fuck</label>";
+		echo "<input type='radio' id='out' name='check-in' value='0'>";
+		echo "<label for='out'>Story</label>";
+		echo "</div>";
+		echo "<input type='submit' name='create_story' value='edit'>";
+		echo "</form>";
+		echo "</div></div>";
+	}
 
 }
 

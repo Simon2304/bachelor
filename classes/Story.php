@@ -95,7 +95,6 @@ class Story {
 
 	public function updateFucks($fuck_tj) {
 		try {
-			var_dump($fuck_tj);
 			$sql = "UPDATE stories SET fuck = ? WHERE id = ? AND user_id = ?";
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindParam(1, $fuck);

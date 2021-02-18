@@ -29,7 +29,7 @@ include('includes/page-top.php');
 		<source src="audio/Eagles.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 </audio>
-<div class="content">
+<div class="body-content">
 	<div class="data">
 		<div class="credentials">
 			<table>
@@ -99,23 +99,12 @@ include('includes/page-top.php');
 		}
 
 		if (isset($_POST['delete'])) {
-			$view->deleteIceView();
-		}
-
-		if (isset($_POST['yes'])) {
-			$ice->deleteIce($_SESSION['id']);
-			header('location: '.$genurl.'topsecretintel');
+			$view->deleteIceView($_POST['id']);
 		}
 
 		if (isset($_POST['edit'])) {
 			$edit_form = array('cp' => $_POST['cp'], 'tel' => $_POST['tel'], 'id' => $_POST['id'] );
 			$view->updateIceView($edit_form);
-		}
-
-		if (isset($_POST['edit_ice'])) {
-			$edit_form = array('cp' => $_POST['cp'], 'tel' => $_POST['tel'], 'id' => $_SESSION['id']);
-			$ice->updateIce($edit_form);
-			header('location: '.$genurl.'topsecretintel');
 		}
 
 		if (isset($_POST['new'])) {
@@ -169,6 +158,7 @@ include('includes/page-top.php');
 <script src="<?php echo $genurl; ?>js/buttons.js"></script>
 <script src="<?php echo $genurl; ?>js/story.js"></script>
 <script src="<?php echo $genurl; ?>js/fuck.js"></script>
+<script src="<?php echo $genurl; ?>js/ice.js"></script>
 
 
 </body>

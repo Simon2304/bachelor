@@ -33,10 +33,9 @@ textarea{
 	color: #e4e4e4;
 }
 
-.content {
+.body-content {
 	margin-top: 5%;
 	float: left;
-	position: relative;
 	display: inline-flex;
 }
 
@@ -155,24 +154,25 @@ form .signup-link{
 }
 
 .wrapper2{
-  position:absolute;
-  width:35vw;
-  height:60vh;
-  background:rgba(0,0,0,0.8);
-  z-index:2;
-  opacity:1;
-  overflow:hidden;
-  box-sizing:border-box;
-  transition: top 500ms ease-in-out,
-              opacity 500ms ease-in-out,
-              height 0ms ease-in-out 500ms;
+	position: absolute;
+	min-width: 20%;
+	width: auto;
+	height: auto;
+	/* background: rgba(0,0,0,0.8); */
+	z-index: 2;
+	opacity: 1;
+	overflow: hidden;
+	box-sizing: border-box;
+	transition: top 500ms ease-in-out,
+				opacity 500ms ease-in-out,
+				height 0ms ease-in-out 500ms;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-  place-items: center;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+	place-items: center;
+	background: #fff;
+	border-radius: 15px;
+	box-shadow: 0px 15px 20px rgb(0 0 0 / 10%);
 }
 .wrapper2 .title{
   font-size: 35px;
@@ -218,6 +218,16 @@ form .field input:valid{
   transform: translateY(-50%);
   transition: all 0.3s ease;
 }
+
+.overlay-form {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+
 .overlay-form .close-btn {
   position:absolute;
   top:20px;
@@ -275,6 +285,7 @@ body.activeForm .overlay-form {
 	opacity: 0.9;
 	padding-bottom: 2%;
 	margin: 1%;
+
 }
 
 .credentials {
@@ -286,11 +297,36 @@ body.activeForm .overlay-form {
 	color: white;
 }
 
-.ice {
+.ice-data {
+	height: fit-content;
+    position: relative;
+	background: white;
+	width: 25%;
+	border-radius: 5%;
+	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+	opacity: 0.9;
+	padding-bottom: 2%;
+	margin: 1%;
+}
+
+.ice-data h2{
 	margin-left: 2%;
 	color: white;
 }
 
+.ice-person {
+	color: white;
+	margin-left: 2%;
+}
+
+
+.data h2{
+	margin-left: 2%;
+	color: white;
+}
+.new-ice {
+	margin-left: 2%;
+}
 .story {
 	float:left;
 	height: 70%;
@@ -302,6 +338,9 @@ body.activeForm .overlay-form {
 	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 	opacity: 0.9;
 	padding-bottom: 2%;
+}
+.story_tj {
+	margin-bottom: 2%;
 }
 
 .story::-webkit-scrollbar {
@@ -342,17 +381,44 @@ body.activeForm .overlay-form {
 }
 
 .edit_story {
-	float:left;
-	height: 50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 30%;
+	width: auto;
+	z-index: 9;
+	background: #fff;
+	border-radius: 15px;
+	height: auto;
+	min-height: 50%;
+	color: black;
+}
+
+.edit_story textarea {
+	margin-top: 5%;
 	margin-left: 2%;
-    position: relative;
-	background: white;
-	width: 33%;
-	border-radius: 2%;
-	overflow: scroll;
-	background-color: #222;
-	opacity: 0.9;
-	padding-bottom: 2%;
+	width: 96%;
+	color: black;
+	resize: none;
+	height: 400px;
+}
+
+.edit_story input[type="submit"]{
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  transition: all 0.3s ease;
+  width: 90%;
+  margin-left: 5%;
+}
+.edit_story input[type="submit"]:active{
+  transform: scale(0.95);
 }
 
 .fuck {
@@ -395,7 +461,9 @@ body.activeForm .overlay-form {
 	padding-bottom: 2%;
 
 }
-
+ .fuck_tj {
+	 margin-bottom: 2%;
+ }
 
 .fuck h2 {
 	background-color: #3b5998;

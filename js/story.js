@@ -11,6 +11,7 @@ $('.editStoryForm').submit(function(e){
 			$('.story_item[data-id="'+id+'"] .story_tj').html(response.story);
 			$('.story_item[data-id="'+id+'"] .hiddentextarea').html(response.story);
 			$('.edit_story').fadeOut(200);
+			$('.overlay-form').fadeOut(200);
 			console.log(response);
 		}
 	});
