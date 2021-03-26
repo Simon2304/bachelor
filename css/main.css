@@ -694,3 +694,15 @@ form .field input:valid {
   clear: both;
   display: table;
 }
+
+.close {
+  color: white;
+  float: right;
+  margin-right: 4%;
+  transition: color 0.2s ease-in-out;
+}
+
+.close:hover {
+  cursor: pointer;
+  color: #4158d0;
+}

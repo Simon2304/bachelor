@@ -23,3 +23,9 @@ $('.overlay-form').click(function(e){
 	e.preventDefault();
 	
 });
+
+$('.close').click(function(e){
+	const form = $('.overlay-form');
+	const overlay = $(this).closest(form);
+    overlay.fadeOut(200);
+});

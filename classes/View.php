@@ -3,11 +3,11 @@
 class View {
 
 	public function createIceView(){
-		echo "<div class='overlay-form'";
+		echo "<div class='overlay-form'>";
 			echo "<div class='overlay'></div>";
 			echo "<div class='data-create-ice'>";
 				echo "<div class='wrapper2'>";
-					echo "<div class='title'> Enter ICE credentials </div>";
+					echo "<div class='title'> Enter ICE credentials <span class='close'>x</span></div>";
 					echo "<form action='' method='POST' class='createIceForm'>";
 					echo "<div class='field'><p> Contactpersoon en telefoonnummer van de persoon die wij moeten bellen in geval van nood </p></div>";
 							echo "<div class='field'><input type='text' name='name' required>";
@@ -86,7 +86,7 @@ class View {
 		echo "<div class='overlay-form'>";
 			echo "<div class='overlay'></div>";
 			echo "<div class='wrapper2 data-create-ice'>";
-			echo "<div class='title'> Edit ICE credentials </div>";
+			echo "<div class='title'> Edit ICE credentials <span class='close'>x</span></div>";
 				echo "<form action='' method='POST' class='editIceForm'>";
 					echo "<div class='field'><input type='text' name='cp' value='".$edit_form['cp']."' required>";
 					echo "<label for='cp'>Naam</label></div>";
@@ -104,7 +104,7 @@ class View {
 		echo "<div class='overlay-form'>
 			<div class='overlay'></div>
 			<div class='wrapper2'>
-		    	<div class='title'>Signup form</div>
+		    	<div class='title'>Signup form<span class='close'>x</span></div>
 				<form action='' method='POST' class='signUpForm'>
 		    		<div class='field'>
 		      			<input type='text' name='email' value='".$edit_form['email']."'required>
@@ -148,7 +148,7 @@ class View {
 		shuffle($fuck_tj);
 
 		echo "<div class='fuck'>";
-		echo "<h2>Ways to fuck with TJ during his bachelorparty</h2>";
+		echo "<h2>Ways to fuck with TJ during his bachelorparty </h2>";
 		echo "<div class='add_fuck'></div>";
 		for ($i = 0; $i < sizeof($fuck_tj); $i++) {
 			if ($fuck_tj[$i]['fuck'] == null) {
@@ -213,7 +213,7 @@ class View {
 	public function editFuckTjView($edit_form) {
 		echo "<div class='overlay-form'>";
 		echo "<div class='overlay'></div>";
-		echo "<div class='edit_fuck'>";
+		echo "<div class='edit_fuck'><span class='close'>x</span>";
 		echo "<form action='' class='editFuckForm' data-id='".$edit_form['id']."' method='POST'>";
 		echo "<textarea name='fuck'>".strip_tags($edit_form['fuck'])."</textarea>";
 		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
@@ -226,7 +226,7 @@ class View {
 	public function editStoryTjView($edit_form) {
 		echo "<div class='overlay-form'>";
 		echo "<div class='overlay'></div>";
-		echo "<div class='edit_story'>";
+		echo "<div class='edit_story'><span class='close'>x</span>";
 		echo "<form action='' class='editStoryForm' data-id='".$edit_form['id']."' method='POST'>";
 		echo "<textarea name='story'>".strip_tags($edit_form['story'])."</textarea> <br />";
 		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
