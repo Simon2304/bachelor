@@ -32,41 +32,44 @@ include('includes/page-top.php');
 <div class="body-content">
 	<div class="data">
 		<div class="credentials">
-			<table>
-				<h2>Credentials</h2>
-				<tr>
-					<td>Voornaam: <?php echo $user_data['firstname']; ?></td>
-				</tr>
-				<tr>
-					<td>Achternaam: <?php echo $user_data['lastname']; ?></td>
-				</tr>
-				<tr>
-					<td>email: <?php echo $user_data['email']; ?></td>
-				</tr>
-				<tr>
-					<td>06-nummer: <?php echo $user_data['phone']; ?></td>
-				</tr>
-				<tr>
-					<td>
-						in/out:
-						<?php
-							if($user_data['imin'] == 1) {
-								echo "Ik ga mee";
-							} else {
-								echo "Watje";
-							}
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>Select image to upload:</td>
-					<tr><td><form action="" method="POST" enctype="multipart/form-data">
-						<input type="file" name="fileToUpload" id="fileToUpload">
-					<input type="submit" value="Upload Image" name="submit">
-					<tr><td><input type="submit" name="edit_cred" value="edit"/></td></tr>
-				</form></td></tr>
-				</tr>
-			</table>
+			<form action="" method="POST" name="editCredForm" class="editCredForm" enctype="multipart/form-data">
+				<table>
+					<h2>Credentials</h2>
+					<tr>
+						<td class="fname">Voornaam: <?php echo $user_data['firstname']; ?></td>
+					</tr>
+					<tr>
+						<td class="lname">Achternaam: <?php echo $user_data['lastname']; ?></td>
+					</tr>
+					<tr>
+						<td class="mail">email: <?php echo $user_data['email']; ?></td>
+					</tr>
+					<tr>
+						<td class="tel">06-nummer: <?php echo $user_data['phone']; ?></td>
+					</tr>
+					<tr>
+						<td class="in_out">
+							in/out:
+							<?php
+								if($user_data['imin'] == 1) {
+									echo "Ik ga mee";
+								} else {
+									echo "Watje";
+								}
+							?>
+						</td>
+					</tr>
+					<tr>
+						<td>Upload kopie paspoort:</td>
+						<form method='POST' action='' name='fileUploadForm' class='fileUploadForm' enctype="multipart/form-data"><tr><td>
+							<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="Upload paspoort" name="submit">
+						<tr><td><input type="submit" name="edit_cred" class="edit_cred" value="edit"/></td></tr>
+						</td></tr>
+						</form>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 	<?php
@@ -77,45 +80,25 @@ include('includes/page-top.php');
 		$view->fuckTjView($jetzt_gehts_los);
 
 
-		if (isset($_POST['edit_cred'])){
+		if (isset($_POST['edit_cred'])) {
 			$view->updateUserView($user_data);
+		}
+
+		if (isset($_POST['new_ice'])) {
+			$view->createIceView();
+		}
+
+		if (isset($_POST['delete_ice'])) {
+			$view->deleteIceView($_POST['id']);
+		}
+
+		if (isset($_POST['edit_ice'])) {
+			$edit_form = array('cp' => $_POST['cp'], 'tel' => $_POST['tel'], 'id' => $_POST['id']);
+			$view->updateIceView($edit_form);
 		}
 
 		if (isset($_POST['submit'])) {
 			$user->uploadPassportUser();
-		}
-
-		if (isset($_POST['update_cred'])){
-			// Update password, if !empty($_POST['password']). Array 2 opties.
-			// $password = md5(md5('tjisgay123'.$_POST['password'].'321yagsijt'));
-			$email = $_POST['email'];
-			$firstname = $_POST['firstname'];
-			$lastname = $_POST['lastname'];
-			$phone = $_POST['phone'];
-			$imin = $_POST['check-in'];
-			$form_user = array('email'=>$email, 'firstname'=>$firstname, 'lastname' => $lastname, 'phone' => $phone, 'imin' => $imin);
-			$user->updateUserData($form_user);
-			header('location: '.$genurl.'topsecretintel');
-		}
-
-		if (isset($_POST['delete'])) {
-			$view->deleteIceView($_POST['id']);
-		}
-
-		if (isset($_POST['edit'])) {
-			$edit_form = array('cp' => $_POST['cp'], 'tel' => $_POST['tel'], 'id' => $_POST['id'] );
-			$view->updateIceView($edit_form);
-		}
-
-		if (isset($_POST['new'])) {
-			$view->createIceView();
-		}
-
-		if (isset($_POST['new-ice'])) {
-			$cp = $_POST['name'];
-			$tel = $_POST['tel'];
-			$create_ice = $ice->createIce($cp,$tel);
-			header('location: '.$genurl.'topsecretintel');
 		}
 
 		if (isset($_POST['edit_f'])) {
@@ -131,9 +114,8 @@ include('includes/page-top.php');
 		}
 
 		if (isset($_POST['delete_f'])) {
-			$delete_fuck_tj = $_POST['id'];
-			$story->deleteStories($delete_fuck_tj);
-			header('location: '.$genurl.'topsecretintel');
+			$id = $_POST['id'];
+			$view->deleteStoryView($id);
 		}
 
 		if (isset($_POST['edit_s'])) {
@@ -148,9 +130,8 @@ include('includes/page-top.php');
 		}
 
 		if (isset($_POST['delete_s'])) {
-			$delete_fuck_tj = $_POST['id'];
-			$story->deleteStories($delete_fuck_tj);
-			header('location: '.$genurl.'topsecretintel');
+			$id = $_POST['id'];
+			$view->deleteStoryView($id);
 		}
 		 ?>
 </div>
@@ -159,7 +140,9 @@ include('includes/page-top.php');
 <script src="<?php echo $genurl; ?>js/story.js"></script>
 <script src="<?php echo $genurl; ?>js/fuck.js"></script>
 <script src="<?php echo $genurl; ?>js/ice.js"></script>
-
+<script src="<?php echo $genurl; ?>js/cred.js"></script>
+<script src="<?php echo $genurl; ?>js/fileUpload.js"></script>
+<script src="<?php echo $genurl; ?>js/modal.js"></script>
 
 </body>
 </html>

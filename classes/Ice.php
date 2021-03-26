@@ -2,6 +2,7 @@
 class Ice {
 
 	public $dbh;
+	
 
 	public function __construct($db_handle) {
 		$this->dbh = $db_handle;
@@ -16,6 +17,7 @@ class Ice {
 			$stmt->bindParam(3, $name);
 			$name = $_SESSION['userfname'];
 			$stmt->execute();
+
 
 
 		} catch(PDOException $e) {
@@ -61,7 +63,7 @@ class Ice {
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			if (empty($result)) {
 				return false;
-				
+
 			} else {
 				return $result;
 			}
@@ -90,6 +92,7 @@ class Ice {
 			echo $e->getMessage();
 		}
 	}
+
 }
 
 

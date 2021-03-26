@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 class Story {
 	public $dbh;
@@ -11,9 +9,14 @@ class Story {
 	}
 
 	// Stories about TJ
-	public function createStories($story_tj) {
+	public function createStories($story_tj, $story_or_fuck) {
 		try {
-			$sql = "INSERT INTO stories (story, name, user_id) VALUES (?,?,?)";
+			if ($story_or_fuck == 0) {
+				$sql = "INSERT INTO stories (fuck, story, name, user_id) VALUES (null,?,?,?)";
+			} else {
+				$sql = "INSERT INTO stories (fuck, story, name, user_id) VALUES (?,null,?,?)";
+			}
+			
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindParam(1, $story_tj);
 			$stmt->bindParam(2, $name);
@@ -22,8 +25,22 @@ class Story {
 			$user_id = $_SESSION['id'];
 
 			$stmt->execute();
+			$last_id = $this->dbh->lastInsertId();
+
+			try {
+				$sql = "SELECT * FROM stories WHERE id = $last_id";
+				$stmt = $this->dbh->prepare($sql);
+				$stmt->execute();
+			
+				$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+				return $result;
+			} catch(PDOException $e) {
+				echo $e->getMessage();
+			}
+
 		} catch(PDOException $e) {
-			echo $e->getMessage();
+			return $e->getMessage();
 		}
 	}
 
@@ -32,7 +49,7 @@ class Story {
 			$sql = "SELECT * FROM stories";
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->execute();
-
+		
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			return $result;
@@ -55,6 +72,7 @@ class Story {
 
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			return $result;
+
 		} catch(PDOException $e) {
 			echo $e->getMessage();
 		}
@@ -62,15 +80,19 @@ class Story {
 
 	public function deleteStories($id) {
 		try {
-			$sql = "DELETE * FROM stories WHERE id = ? AND user_id = ?";
+			$sql = "DELETE FROM stories WHERE id = ? AND user_id = ?";
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindParam(1, $id);
 			$stmt->bindParam(2, $_SESSION['id']);
 
 			$stmt->execute();
 
-			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			return $result;
+			if ($stmt) {
+				return true;
+			} else {
+				return false;
+			}
+
 		} catch(PDOException $e) {
 			echo $e->getMessage();
 		}

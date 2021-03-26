@@ -15,7 +15,7 @@ $(document).ready(function(){
 				$('.wrapper').remove();
 				$('body').html('<div class="fout"><img src="images/gaatfout.jpg"></div>');
 				setTimeout(function(){
-					window.location.href = 'http://localhost/tj/aanmeldpagina/topsecretintel';
+					window.location.href = 'localhost/tj/aanmeldpagina/topsecretintel';
 				}, 2000);
 			}
 		});
@@ -27,5 +27,5 @@ function toggleForm() {
 }
 
 function redirect() {
-	window.location.replace("http://localhost/tj/aanmeldpagina/topsecretintel");
+	window.location.replace("localhost/tj/aanmeldpagina/topsecretintel");
 }

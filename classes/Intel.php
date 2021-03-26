@@ -1,7 +1,5 @@
 <?php
-/**
-* TODO: Add javascript to fill table from DB data.
-*/
+
 class Intel {
 
 	public function fuckTJ(){
