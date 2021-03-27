@@ -696,9 +696,14 @@ form .field input:valid {
 }
 
 .close {
-  color: white;
+  color: black;
   float: right;
   margin-right: 4%;
+  transition: color 0.2s ease-in-out;
+}
+
+.color_white {
+  color: white !important;
   transition: color 0.2s ease-in-out;
 }
 

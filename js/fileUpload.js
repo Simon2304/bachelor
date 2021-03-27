@@ -24,8 +24,3 @@ $('.overlay-form').click(function(e){
 	
 });
 
-$('.close').click(function(e){
-	const form = $('.overlay-form');
-	const overlay = $(this).closest(form);
-    overlay.fadeOut(200);
-});

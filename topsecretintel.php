@@ -61,12 +61,13 @@ include('includes/page-top.php');
 					</tr>
 					<tr>
 						<td>Upload kopie paspoort:</td>
-						<form method='POST' action='' name='fileUploadForm' class='fileUploadForm' enctype="multipart/form-data"><tr><td>
-							<input type="file" name="fileToUpload" id="fileToUpload">
-						<input type="submit" value="Upload paspoort" name="submit">
-						<tr><td><input type="submit" name="edit_cred" class="edit_cred" value="edit"/></td></tr>
-						</td></tr>
-						</form>
+							<form method='POST' action='' name='fileUploadForm' class='fileUploadForm' enctype="multipart/form-data"><tr><td>
+								<input type="file" name="fileToUpload" id="fileToUpload">
+								<input type="submit" value="Upload paspoort" name="submit">
+								<tr><td><input type="submit" name="edit_cred" class="edit_cred" value="edit"/></td></tr>
+							</form>	
+						</td>
+					</tr>
 					</tr>
 				</table>
 			</form>

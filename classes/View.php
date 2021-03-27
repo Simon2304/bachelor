@@ -7,7 +7,7 @@ class View {
 			echo "<div class='overlay'></div>";
 			echo "<div class='data-create-ice'>";
 				echo "<div class='wrapper2'>";
-					echo "<div class='title'> Enter ICE credentials <span class='close'>x</span></div>";
+					echo "<div class='title'> Enter ICE credentials <span class='close color_white'>x</span></div>";
 					echo "<form action='' method='POST' class='createIceForm'>";
 					echo "<div class='field'><p> Contactpersoon en telefoonnummer van de persoon die wij moeten bellen in geval van nood </p></div>";
 							echo "<div class='field'><input type='text' name='name' required>";
@@ -241,6 +241,7 @@ class View {
 		echo "<div class='overlay'></div>";
 		echo "<div class='wrapper2 edit_story'>";
 		echo "<form action='' class='createStoryForm' method='POST'>";
+		echo "<span class='close'>x</span>";
 		echo "<textarea name='story'></textarea> <br />";
 		echo "<div class='checkbox'>";
 		echo "<input type='radio' id='in' name='check-in' value='1'>";
@@ -258,6 +259,7 @@ class View {
 		echo "<div class='overlay'></div>";
 		echo "<div class='wrapper2 edit_story'>";
 		echo "<form action='' class='createFuckForm' method='POST'>";
+		echo "<span class='close'>x</span>";
 		echo "<textarea name='fuck'></textarea> <br />";
 		echo "<div class='checkbox'>";
 		echo "<input type='radio' id='in' name='check-in' value='1' checked>";
