@@ -237,8 +237,6 @@ class View {
 	}
 
 	public function createStoryTjView() {
-		echo "<div class='overlay-form'>";
-		echo "<div class='overlay'></div>";
 		echo "<div class='wrapper2 edit_story'>";
 		echo "<form action='' class='createStoryForm' method='POST'>";
 		echo "<span class='close'>x</span>";
@@ -251,7 +249,7 @@ class View {
 		echo "</div>";
 		echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
 		echo "</form>";
-		echo "</div></div>";
+		echo "</div>";
 	}
 
 	public function createFuckTjView() {

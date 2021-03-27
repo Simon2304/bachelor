@@ -711,3 +711,7 @@ form .field input:valid {
   cursor: pointer;
   color: #4158d0;
 }
+
+.default-modal {
+  display: none;
+}

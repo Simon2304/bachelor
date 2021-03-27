@@ -3,7 +3,8 @@ $('.create_story').click(function(e){
 	$.ajax({
 		url:'scripts/viewsScript.php?createStory=1',
 		success: function (data){
-			$(data).insertAfter('.fuck');
+			$(data).insertAfter('.overlay-form .overlay');
+			$('.default-modal').fadeIn(200);
 		}
 	});
 });

@@ -135,6 +135,9 @@ include('includes/page-top.php');
 			$view->deleteStoryView($id);
 		}
 		 ?>
+    <div class="overlay-form default-modal">
+        <div class="overlay"></div>
+    </div>
 </div>
 <script src="<?php echo $genurl; ?>js/autoplayMusic.js"></script>
 <script src="<?php echo $genurl; ?>js/buttons.js"></script>
