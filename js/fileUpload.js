@@ -1,21 +1,29 @@
 $('.fileUploadForm').submit(function(e){
     e.preventDefault();
-    alert("test");
-	// var id = $(this).data('id');
-	// var formData = $(this).serialize();
-	// $.ajax({
-	// 	url: 'scripts/update/fuckUpdateScript.php',
-	// 	method: 'POST',
-	// 	data: formData,
-	// 	dataType: 'json',
-	// 	success: function(response){
-	// 		$('.fuck_item[data-id="'+id+'"] .fuck_tj').html(response.fuck);
-	// 		$('.fuck_item[data-id="'+id+'"] .hiddentextarea').html(response.fuck);
-	// 		$('.edit_fuck').fadeOut(200);
-	// 		$('.overlay-form').fadeOut(200);
-			
-	// 	}
-	// });
+    var fd = new FormData();
+    var files = $('#fileToUpload')[0].files;
+
+    fd.append('file',files[0]);
+
+    $.ajax({
+		url: 'scripts/create/uploadFileScript.php',
+		method: 'POST',
+		data: fd,
+        contentType: false,
+        processData: false,
+		dataType: 'json'
+	}).done(function(response) {
+	    console.log(response.message);
+	    // if(response.error) {
+	    //     $('.alert').css('background: red');
+	    //     $('.alert').innerText(response.message);
+	    //     $('.alert').fadeIn(200);
+        // }
+
+        // if(response.success) {
+        //
+        // }
+    });
 });
 
 
