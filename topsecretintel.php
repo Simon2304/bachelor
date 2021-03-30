@@ -61,11 +61,11 @@ include('includes/page-top.php');
 					</tr>
 					<tr>
 						<td>Upload kopie paspoort:</td>
-							<form method='POST' action='' name='fileUploadForm' class='fileUploadForm' enctype="multipart/form-data"><tr><td>
+							<tr><td>
 								<input type="file" name="fileToUpload" id="fileToUpload">
-								<input type="submit" value="Upload paspoort" name="submit">
+								<input type="button" value="Upload paspoort" name="submit" id="uploadFile" class="uploadFile" onclick="uploadFile();">
 								<tr><td><input type="submit" name="edit_cred" class="edit_cred" value="edit"/></td></tr>
-							</form>	
+							
 						</td>
 					</tr>
 					</tr>
@@ -98,9 +98,9 @@ include('includes/page-top.php');
 			$view->updateIceView($edit_form);
 		}
 
-		if (isset($_POST['submit'])) {
-			$user->uploadPassportUser();
-		}
+		// if (isset($_POST['submit'])) {
+		// 	$user->uploadPassportUser();
+		// }
 
 		if (isset($_POST['edit_f'])) {
 			$edit_form = array('fuck' => $_POST['fuck_tj'], 'id' => $_POST['id']);

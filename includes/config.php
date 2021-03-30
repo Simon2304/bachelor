@@ -1,6 +1,6 @@
 <?php
 
-	$genurl = "https://simonomgeving.dev/";
+	$genurl = "http://localhost/tj/aanmeldpagina/";
 
 	$self = htmlentities($_SERVER['PHP_SELF']);
 	$replace = preg_match("/([-'a-z0-9]+)(.php)/", $self, $match);

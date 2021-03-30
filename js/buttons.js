@@ -14,7 +14,8 @@ $('.create_fuck').click(function(e){
 	$.ajax({
 		url:'scripts/viewsScript.php?createFuck=1',
 		success: function (data){
-			$(data).insertAfter('.fuck');
+			$(data).insertAfter('.overlay-form .overlay');
+			$('.default-modal').fadeIn(200);
 		}
 	});
 });

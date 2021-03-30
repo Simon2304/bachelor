@@ -238,36 +238,34 @@ class View {
 
 	public function createStoryTjView() {
 		echo "<div class='wrapper2 edit_story'>";
-		echo "<form action='' class='createStoryForm' method='POST'>";
-		echo "<span class='close'>x</span>";
-		echo "<textarea name='story'></textarea> <br />";
-		echo "<div class='checkbox'>";
-		echo "<input type='radio' id='in' name='check-in' value='1'>";
-		echo "<label for='in' class='color_black'>Fuck</label>";
-		echo "<input type='radio' id='out' name='check-in' value='0' checked>";
-		echo "<label for='out'>Story</label>";
-		echo "</div>";
-		echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
-		echo "</form>";
+			echo "<form action='' class='createStoryForm' method='POST'>";
+				echo "<span class='close'>x</span>";
+				echo "<textarea name='story'></textarea> <br />";
+				echo "<div class='checkbox'>";
+					echo "<input type='radio' id='in' name='check-in' value='1'>";
+					echo "<label for='in' class='color_black'>Fuck</label>";
+					echo "<input type='radio' id='out' name='check-in' value='0' checked>";
+					echo "<label for='out'>Story</label>";
+				echo "</div>";
+				echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
+			echo "</form>";
 		echo "</div>";
 	}
 
 	public function createFuckTjView() {
-		echo "<div class='overlay-form'>";
-		echo "<div class='overlay'></div>";
 		echo "<div class='wrapper2 edit_story'>";
-		echo "<form action='' class='createFuckForm' method='POST'>";
-		echo "<span class='close'>x</span>";
-		echo "<textarea name='fuck'></textarea> <br />";
-		echo "<div class='checkbox'>";
-		echo "<input type='radio' id='in' name='check-in' value='1' checked>";
-		echo "<label for='in' class='color_black'>Fuck</label>";
-		echo "<input type='radio' id='out' name='check-in' value='0'>";
-		echo "<label for='out'>Story</label>";
+			echo "<form action='' class='createFuckForm' method='POST'>";
+				echo "<span class='close'>x</span>";
+				echo "<textarea name='fuck'></textarea> <br />";
+				echo "<div class='checkbox'>";
+					echo "<input type='radio' id='in' name='check-in' value='1' checked>";
+					echo "<label for='in' class='color_black'>Fuck</label>";
+					echo "<input type='radio' id='out' name='check-in' value='0'>";
+					echo "<label for='out'>Story</label>";
+				echo "</div>";
+				echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
+			echo "</form>";
 		echo "</div>";
-		echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
-		echo "</form>";
-		echo "</div></div>";
 	}
 
 	public function deleteStoryView($id){
