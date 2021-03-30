@@ -32,9 +32,9 @@ include('includes/page-top.php');
 <div class="body-content">
 	<div class="data">
 		<div class="credentials">
-			<form action="" method="POST" name="editCredForm" class="editCredForm" enctype="multipart/form-data">
-				<table>
-					<h2>Credentials</h2>
+			<form action="" method="POST" name="editCredForm" class="editCredForm">
+                <h2>Credentials</h2>
+                <table>
 					<tr>
 						<td class="fname">Voornaam: <?php echo $user_data['firstname']; ?></td>
 					</tr>
@@ -59,17 +59,26 @@ include('includes/page-top.php');
 							?>
 						</td>
 					</tr>
-					<tr>
-						<td>Upload kopie paspoort:</td>
-						<form method='POST' action='' name='fileUploadForm' class='fileUploadForm' enctype="multipart/form-data"><tr><td>
-							<input type="file" name="fileToUpload" id="fileToUpload">
-						<input type="submit" value="Upload paspoort" name="submit">
-						<tr><td><input type="submit" name="edit_cred" class="edit_cred" value="edit"/></td></tr>
-						</td></tr>
-						</form>
-					</tr>
-				</table>
-			</form>
+                    <tr>
+                        <td><input type="submit" name="edit_cred" class="edit_cred" value="edit"/></td>
+                    </tr>
+                </table>
+            </form>
+            <form action="#" name='fileUploadForm' class='fileUploadForm' enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td>
+                            <h2>Upload kopie paspoort</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="file" name="fileToUpload" id="fileToUpload"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Upload paspoort" name="submit"></td>
+                    </tr>
+                </table>
+            </form>
 		</div>
 	</div>
 	<?php
@@ -97,9 +106,9 @@ include('includes/page-top.php');
 			$view->updateIceView($edit_form);
 		}
 
-		if (isset($_POST['submit'])) {
-			$user->uploadPassportUser();
-		}
+//		if (isset($_POST['submit'])) {
+//			$user->uploadPassportUser();
+//		}
 
 		if (isset($_POST['edit_f'])) {
 			$edit_form = array('fuck' => $_POST['fuck_tj'], 'id' => $_POST['id']);
