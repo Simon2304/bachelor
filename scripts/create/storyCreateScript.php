@@ -9,7 +9,7 @@ $story = new Story($db_handle);
 
 
 $story_tj = (string) $_POST['story'];
-$story_or_fuck = $_POST['check-in'];
+$story_or_fuck = 1;
 
 $row = $story->createStories($story_tj, $story_or_fuck);
 

@@ -19,3 +19,14 @@ $('.create_fuck').click(function(e){
 		}
 	});
 });
+
+$('.logout_button').click(function(e){
+	e.preventDefault();
+	$.ajax({
+		url:'scripts/logoutScript.php',
+		success: function (){
+			window.location.href = '/info.php';
+		}
+	});
+});
+

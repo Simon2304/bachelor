@@ -698,7 +698,7 @@ form .field input:valid {
 .close {
   color: black;
   float: right;
-  margin-right: 4%;
+
   transition: color 0.2s ease-in-out;
 }
 
@@ -714,4 +714,9 @@ form .field input:valid {
 
 .default-modal {
   display: none;
+}
+
+.logout_button {
+  width: 20%;
+  height: 20%;
 }

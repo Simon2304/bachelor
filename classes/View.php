@@ -6,8 +6,8 @@ class View {
 		echo "<div class='overlay-form'>";
 			echo "<div class='overlay'></div>";
 			echo "<div class='data-create-ice'>";
-				echo "<div class='wrapper2'>";
-					echo "<div class='title'> Enter ICE credentials <span class='close color_white'>x</span></div>";
+				echo "<div class='wrapper2'><span class='close color_white mr-10'>x</span>";
+					echo "<div class='title'> Enter ICE </div>";
 					echo "<form action='' method='POST' class='createIceForm'>";
 					echo "<div class='field'><p> Contactpersoon en telefoonnummer van de persoon die wij moeten bellen in geval van nood </p></div>";
 							echo "<div class='field'><input type='text' name='name' required>";
@@ -26,7 +26,7 @@ class View {
 		if($ice_info == false) {
 			echo "<div class='ice-data'>
 					<h2> In Case off Emergency (ICE) </h2>";
-			echo "<div class='to_do'> TODO: Insert emergency contact </div>";
+			echo "<div class='to_do color_white'> TODO: Insert emergency contact </div>";
 			echo "<div class='ice_items'></div>";
 			echo "<div class='ice-person'>";
 			/**
@@ -85,13 +85,13 @@ class View {
 	public function updateIceView($edit_form) {
 		echo "<div class='overlay-form'>";
 			echo "<div class='overlay'></div>";
-			echo "<div class='wrapper2 data-create-ice'>";
-			echo "<div class='title'> Edit ICE credentials <span class='close'>x</span></div>";
+			echo "<div class='wrapper2 data-create-ice'><span class='close color_white mr-10'>x</span>";
+			echo "<div class='title'> Edit ICE</div>";
 				echo "<form action='' method='POST' class='editIceForm'>";
 					echo "<div class='field'><input type='text' name='cp' value='".$edit_form['cp']."' required>";
 					echo "<label for='cp'>Naam</label></div>";
 					echo "<div class='field'><input type='text' name='tel' value='".$edit_form['tel']."' required>";
-					echo "<label for='tel'>Naam</label></div>";
+					echo "<label for='tel'>Nummer</label></div>";
 					echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
 					echo "<div class='field'><input type='submit' name='edit_ice' value='edit'></div>";
 				echo "</form>";
@@ -103,8 +103,8 @@ class View {
 	public function updateUserView($edit_form) {
 		echo "<div class='overlay-form'>
 			<div class='overlay'></div>
-			<div class='wrapper2'>
-		    	<div class='title'>Signup form<span class='close'>x</span></div>
+			<div class='wrapper2'><span class='close color_white mr-10'>x</span>
+		    	<div class='title'>Signup form</div>
 				<form action='' method='POST' class='signUpForm'>
 		    		<div class='field'>
 		      			<input type='text' name='email' value='".$edit_form['email']."'required>
@@ -241,12 +241,6 @@ class View {
 			echo "<form action='' class='createStoryForm' method='POST'>";
 				echo "<span class='close'>x</span>";
 				echo "<textarea name='story'></textarea> <br />";
-				echo "<div class='checkbox'>";
-					echo "<input type='radio' id='in' name='check-in' value='1'>";
-					echo "<label for='in' class='color_black'>Fuck</label>";
-					echo "<input type='radio' id='out' name='check-in' value='0' checked>";
-					echo "<label for='out'>Story</label>";
-				echo "</div>";
 				echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
 			echo "</form>";
 		echo "</div>";
@@ -257,12 +251,6 @@ class View {
 			echo "<form action='' class='createFuckForm' method='POST'>";
 				echo "<span class='close'>x</span>";
 				echo "<textarea name='fuck'></textarea> <br />";
-				echo "<div class='checkbox'>";
-					echo "<input type='radio' id='in' name='check-in' value='1' checked>";
-					echo "<label for='in' class='color_black'>Fuck</label>";
-					echo "<input type='radio' id='out' name='check-in' value='0'>";
-					echo "<label for='out'>Story</label>";
-				echo "</div>";
 				echo "<button role='button' class='werk_gewoon' name='create_story'>Add</button>";
 			echo "</form>";
 		echo "</div>";

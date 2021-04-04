@@ -8,7 +8,8 @@ class Sessions {
 	}
 
 	public function destroySession() {
-		return session_destroy();
+		session_destroy();
+		header('location: index.php');
 	}
 }
 

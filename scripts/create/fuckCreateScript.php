@@ -9,11 +9,10 @@ $story = new Story($db_handle);
 
 
 $story_tj = (string) $_POST['fuck'];
-$story_or_fuck = $_POST['check-in'];
+$story_or_fuck = 0;
 
 $row = $story->createStories($story_tj, $story_or_fuck);
 
-//var_dump($row); 
 
 $element = "<div class='fuck_item' data-id='".$row['id']."'>";
 $element .= "<form action='' method='POST'>";
