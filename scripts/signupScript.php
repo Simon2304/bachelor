@@ -6,6 +6,8 @@ include_once("../classes/Person.php");
 include_once("../classes/User.php");
 include_once("../classes/Sessions.php");
 
+
+
 $db_handle = DBConnect::getInstance();
 $user = new User($db_handle);
 $person = new Person($db_handle);

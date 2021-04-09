@@ -215,7 +215,7 @@ class View {
 		echo "<div class='overlay'></div>";
 		echo "<div class='edit_fuck'><span class='close'>x</span>";
 		echo "<form action='' class='editFuckForm' data-id='".$edit_form['id']."' method='POST'>";
-		echo "<textarea name='fuck'>".strip_tags($edit_form['fuck'])."</textarea>";
+		echo "<textarea name='fuck'>".strip_tags(nl2br($edit_form['fuck']))."</textarea>";
 		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
 		echo "<input type='submit' name='update_fuck' value='edit'>";
 		echo "<input type='submit' name='close' value='close'>";
@@ -228,7 +228,7 @@ class View {
 		echo "<div class='overlay'></div>";
 		echo "<div class='edit_story'><span class='close'>x</span>";
 		echo "<form action='' class='editStoryForm' data-id='".$edit_form['id']."' method='POST'>";
-		echo "<textarea name='story'>".strip_tags($edit_form['story'])."</textarea> <br />";
+		echo "<textarea name='story'>".strip_tags(nl2br($edit_form['story']))."</textarea> <br />";
 		echo "<input type='hidden' name='id' value='".$edit_form['id']."'>";
 		echo "<input type='submit' name='update_story' value='edit'>";
 		echo "<input type='submit' name='close' value='close'>";

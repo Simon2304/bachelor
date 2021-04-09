@@ -1,8 +1,9 @@
 <?php
 session_start();
 if(!isset($_SESSION['userfname'])){
-	header('location: fout.php');
+	header('location: info.php');
 }
+
 
 include_once("classes/DBConnect.php");
 include_once("classes/Person.php");
